@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scripture Insights</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --card: #f4f4f8;
+    --accent: #4a6fa5;
+  }
+  [data-theme="dark"] {
+    --bg: #121212;
+    --text: #e8e8e8;
+    --card: #1e1e24;
+    --accent: #8ab4f8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--card);
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+  }
+  .logo { font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+  .toggle-btn {
+    background: var(--card);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    color: var(--text);
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+  nav {
+    display: flex;
+    gap: 8px;
+    padding: 12px 20px;
+    overflow-x: auto;
+    border-bottom: 1px solid var(--card);
+  }
+  nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 16px;
+    background: var(--card);
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  nav a.active { background: var(--accent); color: white; }
+  main { padding: 24px 20px; max-width: 700px; margin: 0 auto; }
+  h1 { font-size: 1.6rem; margin-bottom: 12px; }
+  h2 { font-size: 1.2rem; margin: 24px 0 8px; color: var(--accent); }
+  p { margin-bottom: 12px; }
+  .card {
+    background: var(--card);
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+  .verse { font-style: italic; color: var(--accent); font-size: 0.95rem; }
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">✝ Scripture Insights</div>
+  <button class="toggle-btn" onclick="toggleTheme()">🌙 Dark</button>
+</header>
+
+<nav>
+  <a href="#" class="active">Home</a>
+  <a href="#scriptures">Scriptures</a>
+  <a href="#insights">Insights</a>
+  <a href="#privacy">Privacy</a>
+</nav>
+
+<main>
+  <h1>Welcome to Scripture Insights</h1>
+  <p>Discover the depth of God's Word and learn how to apply it practically in your daily life.</p>
+
+  <div class="card">
+    <h2>Verse of the Day</h2>
+    <p class="verse">"Your word is a lamp to my feet and a light to my path." — Psalm 119:105</p>
+    <p><strong>Application:</strong> Before making any decision today, pause and ask: "What does God's Word say about this?" Let Scripture guide your next step.</p>
+  </div>
+
+  <h2 id="scriptures">Scriptures</h2>
+  <div class="card">
+    <p class="verse">"Trust in the Lord with all your heart and lean not on your own understanding." — Proverbs 3:5</p>
+  </div>
+  <div class="card">
+    <p class="verse">"I can do all things through Christ who strengthens me." — Philippians 4:13</p>
+  </div>
+
+  <h2 id="insights">Insights & Applications</h2>
+  <div class="card">
+    <p><strong>Faith in Action:</strong> James 2:17 teaches that faith without works is dead. Today, pick one small act of kindness that puts your faith into practice.</p>
+  </div>
+
+  <h2 id="privacy">Privacy</h2>
+  <div class="card">
+    <p>This website does not collect personal data, use cookies, or track visitors. All content is publicly available for spiritual encouragement.</p>
+  </div>
+</main>
+
+<footer>
+  © 2026 Scripture Insights · Built for God's glory
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const btn = document.querySelector('.toggle-btn');
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    btn.textContent = isDark ? '🌙 Dark' : '☀️ Light';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  }
+  // Load saved theme
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.toggle-btn').textContent = '☀️ Light';
+  }
+</script>
+
+</body>
+</html>
